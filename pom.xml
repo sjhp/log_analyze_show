@@ -1,0 +1,231 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.gooday.hrcn</groupId>
+    <artifactId>hrcn</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>${project.artifactId}</name>
+	<description>The root project of hrcn</description>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+		<!-- Common libs -->
+		<spring_version>4.1.4.RELEASE</spring_version>
+		<javassist_version>3.15.0-GA</javassist_version>
+		<netty_version>4.0.25.Final</netty_version>
+		<mongodb_version>2.12.5</mongodb_version>
+		<zookeeper_version>3.4.6</zookeeper_version>
+		<zkclient_version>0.1</zkclient_version>
+        <kryo_version>2.24.0</kryo_version>
+        <fastjson_version>1.1.39</fastjson_version>
+        <commons_pool2_version>2.0</commons_pool2_version>
+        <kryo_serializers_version>0.26</kryo_serializers_version>
+        <jackson.version>1.9.13</jackson.version>
+
+		<!-- Log libs -->
+		<slf4j_version>1.6.2</slf4j_version>
+		<logback_version>1.0.6</logback_version>
+		
+		<!-- Test libs -->
+		<junit_version>4.12</junit_version>
+
+		<!-- Build args -->
+		<skip_maven_deploy>false</skip_maven_deploy>
+		<updateReleaseInfo>true</updateReleaseInfo>
+		<project_build_sourceEncoding>UTF-8</project_build_sourceEncoding>
+
+		<!-- generate idea copyright -->
+		<copyright>Copyright 2015-2020 Jushanghui Group.&#10; &#10;</copyright>
+
+		<!-- for maven compiler plugin -->
+		<java_source_version>1.8</java_source_version>
+		<java_target_version>1.8</java_target_version>
+		<file_encoding>UTF-8</file_encoding>
+		<maven_compiler_plugin_version>2.3.2</maven_compiler_plugin_version>
+		<maven_source_plugin_version>2.1.1</maven_source_plugin_version>
+		<maven_jar_plugin_version>2.3.2</maven_jar_plugin_version>
+		<maven_war_plugin_version>2.1.1</maven_war_plugin_version>
+		<maven_install_plugin_version>2.3.1</maven_install_plugin_version>
+		<maven_deploy_plugin_version>2.7</maven_deploy_plugin_version>
+        <maven-surefire-plugin_version>2.17</maven-surefire-plugin_version>
+    </properties>
+
+	<!--company-->
+	<organization>
+		<name>jushanghui</name>
+		<url>http://www.jushanghui.com</url>
+	</organization>
+
+	<!--modules-->
+	<modules>
+        <module>hrcn-all</module>
+		<module>hrcn-server</module>
+        <module>hrcn-client</module>
+        <module>hrcn-common</module>
+        <module>hrcn-collect</module>
+		<module>hrcn-export</module>
+        <module>hrcn-analyzer</module>
+        <module>hrcn-notify</module>
+	</modules>
+
+	<dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring_version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring_version}</version>
+            <scope>test</scope>
+        </dependency>
+		<dependency>
+			<groupId>org.apache.zookeeper</groupId>
+			<artifactId>zookeeper</artifactId>
+			<version>${zookeeper_version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.javassist</groupId>
+			<artifactId>javassist</artifactId>
+			<version>${javassist_version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.netty</groupId>
+			<artifactId>netty-all</artifactId>
+			<version>${netty_version}</version>
+		</dependency>
+		<dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit_version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j_version}</version>
+        </dependency>
+		<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-classic</artifactId>
+				<version>${logback_version}</version>
+		</dependency>
+        <dependency>
+            <groupId>com.esotericsoftware.kryo</groupId>
+            <artifactId>kryo</artifactId>
+            <version>${kryo_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+            <version>${commons_pool2_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>de.javakaffee</groupId>
+            <artifactId>kryo-serializers</artifactId>
+            <version>${kryo_serializers_version}</version>
+        </dependency>
+        <!-- Jackson -->
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-jaxrs</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+    </dependencies>
+	</dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <version>${javassist_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.esotericsoftware.kryo</groupId>
+            <artifactId>kryo</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.javakaffee</groupId>
+            <artifactId>kryo-serializers</artifactId>
+        </dependency>
+        <!-- Jackson -->
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-jaxrs</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>SpringApp</finalName>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java_source_version}</source>
+                    <target>${java_target_version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <includes>
+                        <include>**/*Tests.java</include>
+                    </includes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
